@@ -1,59 +1,153 @@
-# UserManagementApp
+# 🧑‍💻 User Management App - Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+Aplicación web desarrollada con Angular moderno para la gestión de
+usuarios. Permite listar, filtrar, crear y visualizar detalles de
+usuarios, siguiendo buenas prácticas de arquitectura, clean code y uso
+de signals.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Tecnologías utilizadas
+
+- Angular (Standalone Components)
+- Signals (state management moderno)
+- Reactive Forms
+- Tailwind CSS
+- RxJS
+- TypeScript
+
+---
+
+## 📦 Instalación y ejecución
+
+1.  Clonar el repositorio:
+
+```bash
+git clone https://github.com/arturo0427/user-management-app
+cd user-management-app
+```
+
+2.  Instalar dependencias:
+
+```bash
+npm install
+```
+
+3.  Ejecutar el proyecto:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4.  Abrir en el navegador:
 
-## Code scaffolding
+http://localhost:4200
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## 🧩 Funcionalidades
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### ✅ Listado de usuarios
 
-```bash
-ng generate --help
-```
+- Obtiene datos desde la API pública:
+  https://jsonplaceholder.typicode.com/users
+- Muestra nombre, email y empresa
+- Diseño responsive con Tailwind
 
-## Building
+---
 
-To build the project run:
+### 🔍 Filtro en tiempo real
 
-```bash
-ng build
-```
+- Filtra usuarios por nombre
+- Implementado con signals y computed
+- Sin duplicación de estado
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+### ➕ Creación de usuario
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- Formulario con Reactive Forms
+- Validaciones:
+  - Nombre obligatorio
+  - Email obligatorio y válido
+- Campos adicionales:
+  - Empresa
+  - Fecha de nacimiento
+- Edad calculada automáticamente en tiempo real
+- Simulación de guardado con delay
+- Feedback visual de éxito
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+### 📄 Detalle de usuario
 
-For end-to-end (e2e) testing, run:
+- Navegación mediante rutas dinámicas
+- Lectura de parámetro `id`
+- Visualización completa del usuario
+- Manejo de estado:
+  - loading
+  - usuario no encontrado
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 🎨 Librería de componentes (UI)
 
-## Additional Resources
+- Implementación de una librería interna (`projects/ui`)
+- Componente reutilizable:
+  - `lib-input`
+- Consumido en el filtro de usuarios
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## ⚙️ Decisiones técnicas
+
+### Uso de Signals
+
+Se utilizaron signals para manejar el estado de forma reactiva y simple.
+
+### Separación de responsabilidades
+
+- `UserService` centraliza lógica y estado
+- Componentes específicos para mejorar escalabilidad
+
+### Reactive Forms
+
+Elegidos por validación estructurada y control del estado.
+
+### Librería de componentes
+
+Se implementó una librería UI interna para desacoplar componentes
+reutilizables.
+
+### Manejo de estado derivado
+
+Uso de `computed` para evitar duplicación de estado.
+
+---
+
+## ⚠️ Consideraciones
+
+- La creación de usuarios es simulada (no persiste en backend)
+- Los datos se mantienen en memoria durante la sesión
+- Al recargar la página, los usuarios creados se pierden
+
+---
+
+## 🧪 Posibles mejoras futuras
+
+- Persistencia con backend real
+- Implementar `ControlValueAccessor` en `ui-input`
+- Tests unitarios
+- Sistema de notificaciones global
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado como prueba técnica Frontend Angular.
+
+#### Arturo Muñoz
+
+📧 [arturo_munoz27@outlook.com](mailto:arturo_munoz27@outlook.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/arturom0427/)  
+💻 [Portafolio](https://arturo0427.github.io/portafolio-responsive/)
