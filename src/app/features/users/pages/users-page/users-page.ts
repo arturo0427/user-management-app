@@ -1,10 +1,11 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Input } from 'ui';
 import { UserService } from '../../../../core/services/user.service';
+import { UserListComponent } from '../../components/user-list.component/user-list.component';
 
 @Component({
   selector: 'app-users-page',
-  imports: [Input],
+  imports: [Input, UserListComponent],
   templateUrl: './users-page.html',
 })
 export class UsersPage implements OnInit {

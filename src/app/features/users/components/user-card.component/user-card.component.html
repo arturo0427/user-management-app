@@ -1,0 +1,24 @@
+<article class="rounded-xl bg-white p-5 shadow-sm transition hover:shadow-md">
+  <div class="space-y-2">
+    <h2 class="text-lg font-semibold text-slate-900">
+      {{ user().name }}
+    </h2>
+
+    <p class="text-sm text-slate-600">
+      {{ user().email }}
+    </p>
+
+    <p class="text-sm text-slate-500">
+      {{ companyName() }}
+    </p>
+  </div>
+
+  <div class="mt-4">
+    <a
+      [routerLink]="['/', user().id]"
+      class="inline-flex rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+    >
+      Ver detalle
+    </a>
+  </div>
+</article>
