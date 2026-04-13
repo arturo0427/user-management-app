@@ -15,6 +15,8 @@ export class UsersPage implements OnInit {
   protected readonly search = signal('');
 
   ngOnInit(): void {
-    this.userService.loadUsers();
+    if (!this.userService.users().length) {
+      this.userService.loadUsers();
+    }
   }
 }
