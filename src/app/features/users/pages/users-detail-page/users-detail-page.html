@@ -20,6 +20,13 @@
           <p><strong>Edad:</strong> {{ user()?.age ?? 'No disponible' }}</p>
         </div>
       </div>
+    } @else if (!userService.hasLoadedUsers() || userService.isLoading()) {
+      <div class="flex items-center gap-2 text-sm text-slate-600">
+        <div
+          class="h-4 w-4 animate-spin rounded-full border-2 border-slate-300 border-t-slate-900"
+        ></div>
+        Cargando usuarios...
+      </div>
     } @else {
       <div class="rounded-xl bg-white p-6 text-center shadow-sm">
         <p class="text-sm text-red-600">Usuario no encontrado.</p>

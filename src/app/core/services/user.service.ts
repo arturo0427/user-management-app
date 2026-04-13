@@ -16,10 +16,12 @@ export class UserService {
   private readonly _users = signal<User[]>([]);
   private readonly _searchTerm = signal('');
   private readonly _isLoading = signal(false);
+  private readonly _hasLoadedUsers = signal(false);
 
   readonly users = this._users.asReadonly();
   readonly searchTerm = this._searchTerm.asReadonly();
   readonly isLoading = this._isLoading.asReadonly();
+  readonly hasLoadedUsers = this._hasLoadedUsers.asReadonly();
 
   readonly filteredUsers = computed(() => {
     const term = this._searchTerm().trim().toLowerCase();
@@ -38,9 +40,11 @@ export class UserService {
       next: (users) => {
         this._users.set(users);
         this._isLoading.set(false);
+        this._hasLoadedUsers.set(true);
       },
       error: () => {
         this._isLoading.set(false);
+        this._hasLoadedUsers.set(true);
       },
     });
   }
