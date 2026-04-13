@@ -1,29 +1,34 @@
 <section class="min-h-screen bg-slate-50 p-6">
-  <div class="mx-auto max-w-6xl">
-    <h1 class="text-3xl font-bold text-slate-900">Gestión de usuarios</h1>
-    <p class="mt-2 text-slate-600">Aquí irá el listado, filtro y formulario de creación.</p>
-    <div class="mt-6 max-w-md">
-      <lib-input
-        id="users-search"
-        label="Buscar usuarios"
-        placeholder="Escribe un nombre"
-        [value]="search()"
-        (valueChange)="search.set($event)"
-      />
+  <div class="mx-auto max-w-6xl space-y-6">
+    <div>
+      <h1 class="text-3xl font-bold text-slate-900">Gestión de usuarios</h1>
+      <p class="mt-2 text-slate-600">Consulta, filtra y registra usuarios.</p>
     </div>
 
-    <div class="mt-6 mb-2">
-      <h3 class="text-2xl font-medium">Listado de usuarios</h3>
-    </div>
+    <div class="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+      <div class="space-y-6">
+        <div class="rounded-xl bg-white p-6 shadow-sm">
+          <lib-input
+            id="search"
+            label="Filtrar por nombre"
+            placeholder="Escribe un nombre"
+            [value]="userService.searchTerm()"
+            (valueChange)="userService.updateSearchTerm($event)"
+          />
+        </div>
 
-    <div class="mb-6 mt-1 border-b-1 border-slate-400"></div>
-
-    @if (userService.isLoading()) {
-      <div class="rounded-xl bg-white p-6 shadow-sm">
-        <p class="text-sm text-slate-600">Cargando usuarios...</p>
+        @if (userService.isLoading()) {
+          <div class="rounded-xl bg-white p-6 shadow-sm">
+            <p class="text-sm text-slate-600">Cargando usuarios...</p>
+          </div>
+        } @else {
+          <app-user-list [users]="userService.filteredUsers()" />
+        }
       </div>
-    } @else {
-      <app-user-list [users]="userService.filteredUsers()" />
-    }
+
+      <div>
+        <app-user-form />
+      </div>
+    </div>
   </div>
 </section>
