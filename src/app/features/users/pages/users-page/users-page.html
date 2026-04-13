@@ -2,5 +2,14 @@
   <div class="mx-auto max-w-6xl">
     <h1 class="text-3xl font-bold text-slate-900">Gestión de usuarios</h1>
     <p class="mt-2 text-slate-600">Aquí irá el listado, filtro y formulario de creación.</p>
+    <div class="mt-6 max-w-md">
+      <lib-input
+        id="users-search"
+        label="Buscar usuarios"
+        placeholder="Escribe un nombre"
+        [value]="search()"
+        (valueChange)="search.set($event)"
+      />
+    </div>
   </div>
 </section>
